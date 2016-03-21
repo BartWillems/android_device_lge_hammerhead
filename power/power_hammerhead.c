@@ -320,14 +320,10 @@ static void touch_boost()
 
 static void power_set_interactive(__attribute__((unused)) struct power_module *module, int on)
 {
-    if (last_state == -1) {
-        last_state = on;
-    } else {
-        if (last_state == on)
-            return;
-        else
-            last_state = on;
-    }
+	if (last_state == on)
+		return;
+	else
+		last_state = on;
 
     ALOGV("%s %s", __func__, (on ? "ON" : "OFF"));
     if (on) {
